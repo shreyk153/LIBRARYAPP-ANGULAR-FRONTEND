@@ -1,0 +1,66 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+      <div class='row'>
+        <div class='col-md-4'>Filtered by:</div>
+          <div class='col-md-4'>
+            <select class='custom-select mb-5'
+                    [(ngModel)]='filter' (change)="optionSelect()">
+              <option value="any">No Filter</option>
+              <option value="isbn">ISBN</option>
+              <option value="title">Title</option>
+              <option value="genre">Genre</option>
+              <option value="price">Price</option>
+              <option value="author">Authors</option>
+            </select>
+          </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-4' *ngIf="!noFilterSelected">Filter Value:</div>
+        <div class='col-md-4'>
+          <input type='text' *ngIf='!priceSelected&&!noFilterSelected' [(ngModel)]='value'>
+          <input type='number' *ngIf='priceSelected&&!noFilterSelected' [(ngModel)]='min'>
+        </div>
+        <div class='col-md-4'*ngIf='priceSelected&&!noFilterSelected'>
+          To  <input type='number'  [(ngModel)]='max'>
+        </div>
+      </div>      
+      <br>
+      <div id="fetchbtn">
+        <button type="button" class="btn btn-outline-success" (click)="getAllBooks();">Find</button>
+      </div>
+      <br>
+      <div class='table-responsive' *ngIf='myResponse!==null'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Price</th>
+              <th>Availability</th>
+              <th>Authors</th>
+              <th *ngIf="staticAdmin!=='true'">Borrow</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of myResponse">
+              <td>{{book.isbn}}</td>
+              <td>{{book.title}}</td>
+              <td>{{book.genre}}</td>
+              <td>{{book.price | currency:'INR':'symbol':'1.2-2'}}</td>
+              <td>{{book.quantityAvailable}}</td>
+              <td>{{book.authors}}</td>
+              <td>
+                <button type="button" *ngIf="staticAdmin!=='true'"
+                        class="btn btn-outline-dark" 
+                        (click)="borrowBook(book.isbn)">Borrow Book</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

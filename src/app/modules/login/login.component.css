@@ -1,0 +1,21 @@
+
+.field-error {
+    border: 1px solid #a94442;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+  
+.ng-invalid:not(form) {
+border-left: 5px solid #a94442; /* red */
+}
+
+.alert {
+background-color: #fed3d3;
+color: #820000;
+padding: 1rem;
+margin: .3rem;
+margin-left: 1rem;
+margin-bottom: 0rem;
+}

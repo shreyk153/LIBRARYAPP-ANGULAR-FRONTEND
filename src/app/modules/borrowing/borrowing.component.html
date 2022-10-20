@@ -1,0 +1,43 @@
+<button type="button" class="btn btn-secondary" onclick="history.back()" 
+        *ngIf="staticAdmin==='true'">
+        <i class="fa fa-arrow-left"></i>
+        | Back
+</button>
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='table-responsive'>
+        <table class='table' *ngIf="myResponse!==null">
+          <thead>
+            <tr>
+              <th>Borrowing Id</th>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Date of Issue</th>
+              <th *ngIf="staticAdmin!=='true'">Return Book</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let borrowing of myResponse">
+              <td>{{borrowing.id}}</td>
+              <td>{{borrowing.book.isbn}}</td>
+              <td>{{borrowing.book.title}}</td>
+              <td>{{borrowing.book.price | currency:'INR':'symbol':'1.2-2'}}</td>
+              <td>{{borrowing.dateOfIssue[2]+"/"+borrowing.dateOfIssue[1]+"/"+borrowing.dateOfIssue[0]}}</td>
+              <td>
+                <button type="button" *ngIf="staticAdmin!=='true'"
+                        class="btn btn-outline-dark" 
+                        (click)="returnBook(borrowing.book.isbn)">Return Book</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+<br>
+<div class="bd-callout bd-callout-info" *ngIf="myResponse!==null">
+  <h4>Total Fine - </h4>
+  {{fine}}
+</div>

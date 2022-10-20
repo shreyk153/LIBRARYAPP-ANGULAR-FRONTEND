@@ -1,0 +1,79 @@
+<div class="card">
+    <div class="card-header">
+        <h3>{{staticLogin!=='true'?"Registration":"Profile"}}</h3>
+    </div>
+    <div class="card-body">
+    <form #form="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)">
+        <div class="form-group row">
+            <div class="form-group col-md-4">
+            <label for="username"><strong>Username: </strong></label>
+            <input type="text" id="username" name="username" class="form-control" 
+                        [disabled]="staticLogin==='true'"
+                        placeholder="Enter your username" [(ngModel)]=membershipDto.username
+                        [class.field-error]="form.submitted" required/>
+            </div>
+            <div class="form-group col-md-4">
+            <label for="password"><strong>Password: </strong></label>
+            <div class="input-group">
+            <input [type]="fieldTextType ? 'text': 'password'" id="password" 
+                placeholder="Enter your password" name="password" class="form-control" 
+                    [(ngModel)] = membershipDto.password required />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                        <i 
+                        class="fa"
+                        [ngClass]="{
+                                    'fa-eye-slash': !fieldTextType,
+                                    'fa-eye': fieldTextType
+                                    }"
+                        (click)="toggleFieldTextType()"></i>
+                        </span>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-group col-md-5">
+                <label for="name"><strong>Name: </strong></label>
+                    <input id="name" name="name" class="form-control" placeholder="Name"
+                             [(ngModel)] = membershipDto.name required #nameField="ngModel"
+                             (blur)="onBlur(nameField)"
+                             [class.field-error]="form.submitted"/>
+        
+            </div>
+            <div class="form-group col-md-5">
+                <label for="phone"><strong>Phone Number: </strong></label>
+                    <input type="number" id="form-contact-size" name="phone" 
+                    class="form-control" placeholder="10-digit contact no."
+                            [(ngModel)] = membershipDto.phone min="5000000000" 
+                            max="9999999999" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="form-group col-md-3">
+                <label for="roles"><strong>Roles: </strong></label>
+                <select class='custom-select mb-5'
+                        [(ngModel)]= membershipDto.roles id="roles" name="roles" 
+                        [disabled]="staticLogin==='true'" (click)="select()">
+                    <option value="ROLE_ADMIN">Admin</option>
+                    <option value="ROLE_USER">User</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3" *ngIf="isAdminSelected">
+                <label for="check"><strong>Admin Password: </strong></label>
+                <input type="password" id="check" name="check" class="form-control" 
+                        placeholder="Enter Admin Password" [(ngModel)]=check
+                        [class.field-error]="form.submitted"/>
+            </div>
+        </div>
+        <button class="btn btn-outline-primary" [disabled]="form.invalid">
+            {{staticLogin!=='true'?"Submit":"Update"}}
+        </button>
+        </form>
+        <br>
+        <button class="btn btn-outline-danger" (click)="delete()" *ngIf="staticLogin==='true'">
+            Delete Account
+        </button>
+    </div>
+</div>

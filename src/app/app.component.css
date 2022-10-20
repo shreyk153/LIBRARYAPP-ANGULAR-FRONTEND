@@ -1,0 +1,76 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+.navbar {
+    padding: 1rem;
+    background-color: #efefef;
+    height: 80px;
+}
+
+.container {
+    max-height: calc(100vh - 40px - 80px);
+    min-width: calc(100%);
+    overflow: auto;
+    padding: 2rem;
+}
+
+header {
+    transition: margin-left .5s;
+}
+
+body {
+    transition: margin-left .5s;
+    height: 100%;
+}
+
+footer {
+    bottom:0;
+    width:100%;
+    height:40px;
+    padding-top: 0px;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.sidenav {
+  height: calc(100vh - 40px - 80px);
+  width: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+  overflow-x: hidden;
+  transition: 0.5s;
+  margin-top: 80px;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #4b4b4b;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #000000;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+img
+{
+    margin-right: 0.5rem;
+}
+
+.allButFooter
+{
+  min-height: calc(100vh - 40px - 80px);
+}

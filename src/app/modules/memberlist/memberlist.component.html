@@ -1,0 +1,39 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+      <div class='table-responsive' *ngIf='myResponse!==null'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>Roles</th>
+              <th>Borrowing Details</th>
+              <th>Delete Member</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let member of myResponse">
+              <td>{{member.profile.name}}</td>
+              <td>{{member.profile.phone}}</td>
+              <td>{{member.profile.roles}}</td>
+              <td>
+                <button class="btn btn-primary" type="button" (click)="showUserBorrowings(member.id)"
+                        [disabled]="member.borrowings===null||member.profile.roles==='ROLE_ADMIN'">
+                  Show Borrowings
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-outline-danger" (click)="delete(member.id)" 
+                        [disabled]="member.profile.roles==='ROLE_ADMIN'">
+                  Delete Account
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

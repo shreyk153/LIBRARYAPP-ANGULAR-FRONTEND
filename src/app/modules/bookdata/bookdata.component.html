@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-header">
+        <h3>Book Data</h3>
+    </div>
+    <div class="card-body">
+    <form #form="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)">
+        <div class="form-group row">
+            <div class="form-group col-md-4">
+            <label for="isbn"><strong>ISBN: </strong></label>
+            <input type="number" id="isbn" name="isbn" class="form-control" 
+                        placeholder="Book ISBN" [(ngModel)]="book.isbn"
+                        [class.field-error]="form.submitted" required
+                        (blur)="fetch()"/>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="title"><strong>Title: </strong></label>
+                <input type="text" id="title" name="title" class="form-control" 
+                            placeholder="Book Title" [(ngModel)]="book.title"
+                            [class.field-error]="form.submitted" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-group col-md-6">
+            <label for="genre"><strong>Genre: </strong></label>
+            <input type="text" id="genre" name="genre" class="form-control" 
+                        placeholder="Book Genre" [(ngModel)]="book.genre"
+                        [class.field-error]="form.submitted" required/>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="authors"><strong>Authors: </strong></label>
+                <input type="text" id="authors" name="authors" class="form-control" 
+                            placeholder="Book Authors" [(ngModel)]="book.authors"
+                            [class.field-error]="form.submitted" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-group col-md-4">
+            <label for="Price"><strong>Price: </strong></label>
+            <input type="number" id="price" name="price" class="form-control" 
+                        placeholder="Book Price" [(ngModel)]="book.price"
+                        [class.field-error]="form.submitted" required/>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="quantityAvailable"><strong>Quantity: </strong></label>
+                <input type="number" id="quantityAvailable" name="quantityAvailable" class="form-control" 
+                            placeholder="Book Quantity Available" [(ngModel)]="book.quantityAvailable"
+                            [class.field-error]="form.submitted" required/>
+            </div>
+        </div>
+        <button class="btn btn-outline-primary" [disabled]="form.invalid">
+            Add/Update
+        </button>
+        </form>
+        <br>
+        <button class="btn btn-outline-danger" (click)="delete()">
+            Delete Book
+        </button>
+    </div>
+</div>
+
+<!-- Form: {{ form.value | json }}<br>
+User Register: {{ membershipDto | json }} -->
