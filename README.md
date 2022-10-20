@@ -1,6 +1,11 @@
-# LIBRARYAPPANGULARFRONTEND
+# LIBRARYAPP FRONTEND
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+1. Install Bootstrap - `npm install bootstrap` followed by `npm install --save-dev @types/bootstrap`
+2. Install SweetAlert - `npm install sweetalert --save`
+3. Install FontAwesome - `npm install --save font-awesome angular-font-awesome`
+4. Run `npm install` followed by `npm start` to run.
+
 
 ## Development server
 
