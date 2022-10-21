@@ -4,8 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 1. Install Bootstrap - `npm install bootstrap` followed by `npm install --save-dev @types/bootstrap`
 2. Install SweetAlert - `npm install sweetalert --save`
 3. Install FontAwesome - `npm install --save font-awesome angular-font-awesome`
-4. Run `npm install` followed by `npm start` to run.
+4. Run `npm install` followed by `npm start` to run. Navigate to `http://localhost:4200/`.
 
+#### After correct build of backend and frontend, the app should run as shown in demo
+https://drive.google.com/drive/folders/1L-7Ss4nV4rxnK9rMR-nBId-mLoYq5tVl?usp=sharing
 
 ## Development server
 
